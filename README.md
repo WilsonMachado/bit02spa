@@ -1,0 +1,1 @@
+# Esta es una SPA (Single Page Application)
