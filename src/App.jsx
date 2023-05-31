@@ -7,10 +7,8 @@ import {Navegacion} from './components/Navegacion';
 import { RouteWatchdog } from './components/RouteWatchdog'; 
 
 import { HomePage } from './components/Pages/HomePage';
-import { ServicePage } from './components/Pages/ServicePage';  
-import { ProductPage } from './components/Pages/ProductPage';
-import { AboutPage } from './components/Pages/AboutPage';
-import { ContactPage } from './components/Pages/ContactPage';
+import { ShopPage } from './components/Pages/ShopPage';  
+import { UserPage } from './components/Pages/UserPage';
 import { NotFoundPage } from './components/Pages/NotFoundPage';
 
 function App() {
@@ -67,14 +65,12 @@ function App() {
 
             <Routes>
               <Route path='/bit02spa' element={<HomePage/>} />
-              <Route path='/bit02spa/servicios' element={<ServicePage/>} />
-              <Route path='/bit02spa/productos' element={
+              <Route path='/bit02spa/servicios' element={<ShopPage/>} />
+              <Route path='/bit02spa/profile' element={
                 <RouteWatchdog user={user}>
-                  <ProductPage/>
+                  <UserPage/>
                 </RouteWatchdog>
-              } />              
-              <Route path='/bit02spa/acerca-de' element={<AboutPage/>} />
-              <Route path='/bit02spa/contacto' element={<ContactPage/>} />
+              } />
               <Route path='*' element={<NotFoundPage/>}/>
             </Routes>
             

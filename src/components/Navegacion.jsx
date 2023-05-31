@@ -5,10 +5,8 @@ export const Navegacion = () => {
     
     <nav className="navegacion">
       <Link to='/bit02spa'>Inicio</Link>
-      <Link to='/bit02spa/servicios'>Servicios</Link>  
-      <Link to='/bit02spa/productos'>Producto</Link>  
-      <Link to='/bit02spa/acerca-de'>Acerca de</Link>  
-      <Link to='/bit02spa/contacto'>Contacto</Link>  
+      <Link to='/bit02spa/shop'>Tienda</Link>  
+      <Link to='/bit02spa/profile'>Usuario</Link> 
     </nav>
   )
 }
