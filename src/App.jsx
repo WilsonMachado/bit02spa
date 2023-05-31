@@ -19,7 +19,7 @@ function App() {
     
     // TODO: si hay datos de sesión en localstorage, usuario logueado.
     e.preventDefault();
-    localStorage.setItem('registeredUsers', JSON.stringify( [1, 'Wilson', '1234'] ) );
+    localStorage.setItem('registeredUsers', JSON.stringify( ['Wilson', '1234'] ) );
     setUser( ['Wilson', '1234'] );
 
   };
