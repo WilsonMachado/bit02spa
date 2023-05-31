@@ -18,14 +18,10 @@ function App() {
   const [user, setUser] = useState(null); // Aquí se alamacenará la sesión del usuario
 
   const login = (e) => {                   // Función para iniciar sesión
-    // TODO: almacenar los datos de usuario en localstorage. Si hay datos de sesión en localstorage, usuario logueado.
+    // TODO: si hay datos de sesión en localstorage, usuario logueado.
     e.preventDefault();
-    setUser( {
-      id: 1,
-      username: 'Wilson',
-      email: 'hola@hola.com',
-      password: '1234',
-    });
+    localStorage.setItem('registeredUsers', JSON.stringify( [1, 'Wilson', 'hola@hola.com', '1234'] ) );
+    setUser( [1, 'Wilson', 'hola@hola.com', '1234'] );
 
   };
 
@@ -33,7 +29,24 @@ function App() {
   const logout = (e) => { // Función para cerrar sesión
     e.preventDefault();
     setUser(null)
-  };     
+  }; 
+
+  const addNewUser = () => {
+
+    let currentUsers = JSON.parse(localStorage.getItem('registeredUsers')); // Obtener los usuarios actuales
+    
+    
+    localStorage.setItem('registeredUsers', JSON.stringify
+      ([currentUsers, [2, 'Daniel', 'chao@hola.com', '4321']] ));
+
+    console.log(JSON.parse(localStorage.getItem('registeredUsers'))[0][1]);
+    console.log(JSON.parse(localStorage.getItem('registeredUsers'))[1][1]);
+
+  };
+  
+  const getUsersFromLocalStorage = () => {
+    console.log(localStorage.getItem('registeredUsers'));
+  };
 
 
   return (<BrowserRouter> 
@@ -47,6 +60,9 @@ function App() {
               : <a href='#' onClick={login}>Login</a>
                     
             }
+
+            <button onClick={getUsersFromLocalStorage}>Imprimir usuarios</button>
+            <button onClick={addNewUser}>Registrar Nuevo usuario</button>
 
             <Routes>
               <Route path='/bit02spa' element={<HomePage/>} />
