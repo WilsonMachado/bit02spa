@@ -19,8 +19,8 @@ function App() {
     
     // TODO: si hay datos de sesión en localstorage, usuario logueado.
     e.preventDefault();
-    localStorage.setItem('registeredUsers', JSON.stringify( ['Wilson', '1234'] ) );
-    setUser( ['Wilson', '1234'] );
+    localStorage.setItem('registeredUsers', JSON.stringify( [['Wilson', '1234']] ) );
+    setUser([['Wilson', '1234']]);
 
   };
 
@@ -33,18 +33,18 @@ function App() {
   const addNewUser = () => {
 
     let currentUsers = JSON.parse(localStorage.getItem('registeredUsers')); // Obtener los usuarios actuales
+    currentUsers.push(['Daniel', '4321']);
     
-    
-    localStorage.setItem('registeredUsers', JSON.stringify
-      ([currentUsers, ['Daniel', '4321']] ));
+    localStorage.setItem('registeredUsers', JSON.stringify( currentUsers  ));
 
-    console.log(JSON.parse(localStorage.getItem('registeredUsers'))[0][1]);
-    console.log(JSON.parse(localStorage.getItem('registeredUsers'))[1][1]);
+      console.log('Usuario agregado');
 
   };
+
+  
   
   const getUsersFromLocalStorage = () => {
-    console.log(localStorage.getItem('registeredUsers'));
+    console.table(JSON.parse(localStorage.getItem('registeredUsers')));
   };
 
 
