@@ -65,7 +65,7 @@ function App() {
 
             <Routes>
               <Route path='/bit02spa' element={<HomePage/>} />
-              <Route path='/bit02spa/servicios' element={<ShopPage/>} />
+              <Route path='/bit02spa/shop' element={<ShopPage/>} />
               <Route path='/bit02spa/profile' element={
                 <RouteWatchdog user={user}>
                   <UserPage/>
