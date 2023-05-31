@@ -17,8 +17,9 @@ function App() {
 
   const [user, setUser] = useState(null); // Aquí se alamacenará la sesión del usuario
 
-  const login = () => {                   // Función para iniciar sesión
+  const login = (e) => {                   // Función para iniciar sesión
     // TODO: almacenar los datos de usuario en localstorage. Si hay datos de sesión en localstorage, usuario logueado.
+    e.preventDefault();
     setUser( {
       id: 1,
       username: 'Wilson',
@@ -29,7 +30,10 @@ function App() {
   };
 
     // TODO: borrar la sesión del usuario en el localstorage, pero mantener usuarios registrados. En mi app, una cosa es estar logueado y otra es estar registrado
-  const logout = () => setUser(null);     // Función para cerrar sesión
+  const logout = (e) => { // Función para cerrar sesión
+    e.preventDefault();
+    setUser(null)
+  };     
 
 
   return (<BrowserRouter> 
@@ -39,8 +43,8 @@ function App() {
 
             { // Este botón permite realizar el proceso de login o de logout
               // TODO: componente formulario que recibe datos de registro y almacena en localstorage
-              user ? <button onClick={logout}>Logout</button>
-              : <button onClick={login}>Login</button>
+              user ? <a href='#' onClick={logout}>Logout</a>
+              : <a href='#' onClick={login}>Login</a>
                     
             }
 
