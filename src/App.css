@@ -47,40 +47,29 @@ a:hover{
 }
 
 /** Estilos para el formulario */
-
-.register-form {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    max-width: 1024px;
-    font-family: 'Courier Prime', monospace;
-    font-size: 2rem;
-    background-color: #f0f0f0;
-    color: #222222;
-  }
   
-  .register-form h2 {
+  .form h2 {
     margin: 20px 0;
   }
   
-  .register-form .form-group {
+  .form .form-group {
     margin-bottom: 20px;
   }
   
-  .register-form label {
+  .form label {
     display: block;
     margin-bottom: 5px;
   }
   
-  .register-form input[type='text'],
-  .register-form input[type='email'],
-  .register-form input[type='password'] {
+  .form input[type='text'],
+  .form input[type='email'],
+  .form input[type='password'] {
     width: 100%;
     padding: 10px;
     border: 1px solid #000;
   }
   
-  .register-form button {
+  .form button {
     padding: 10px 20px;
     background-color: #484848;
     color: #fff;
@@ -88,7 +77,7 @@ a:hover{
     border-radius: 10px;
   }
   
-  .register-form button:hover {
+  .form button:hover {
     background-color: #222222;
   }
 

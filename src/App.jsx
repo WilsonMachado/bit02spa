@@ -1,7 +1,7 @@
 import './App.css';
 
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 import {Navegacion} from './components/Navegacion';
 import { RouteWatchdog } from './components/RouteWatchdog'; 
@@ -11,6 +11,7 @@ import { ShopPage } from './components/Pages/ShopPage';
 import { UserPage } from './components/Pages/UserPage';
 import { NotFoundPage } from './components/Pages/NotFoundPage';
 import { RegisterPage } from './components/Pages/RegisterPage';
+import { LoginPage } from './components/Pages/LoginPage';
 
 function App() {
 
@@ -27,8 +28,7 @@ function App() {
     }else{
       alert('Tenga en cuenta que debe registrarse si quiere acceder a todas la funcionalidades');
     }
-  }, [])
-  
+  }, []) 
 
   //? Actualización
 
@@ -42,27 +42,9 @@ function App() {
 
   //** //////////////////////////////////////////////////////////////////////////// */
 
-  //** Handlers */
+  //** Handlers */  
 
-  const login = (e) => {                   // Función para iniciar sesión
-    
-    // TODO: si hay datos de sesión en localstorage, usuario logueado.
-    e.preventDefault();
-
-    const credenciales = {
-      username: 'Wilson',
-      password: '1234'
-    };
-    
-    localStorage.setItem('registeredUsers', JSON.stringify( [credenciales] ) );
-    
-    localStorage.setItem('currentUser',     JSON.stringify( credenciales ) );
-    
-    setCurrentUser(credenciales);   
-
-  };
-
-    // TODO: borrar la sesión del usuario en el localstorage, pero mantener usuarios registrados. En mi app, una cosa es estar logueado y otra es estar registrado
+  
   const logout = (e) => { // Función para cerrar sesión
     e.preventDefault();
     localStorage.removeItem('currentUser');
@@ -104,6 +86,8 @@ function App() {
     console.table(JSON.parse(localStorage.getItem('registeredUsers')));
   };
 
+  //** //////////////////////////////////////////////////////////////////////////// */
+
   return (<BrowserRouter> 
           
             <div className='container'>
@@ -114,15 +98,15 @@ function App() {
                   (currentUser !== null) ?
                     <>
                       <div>
-                        <a href='#' onClick={cart}>Carrito</a>
-                        <a href='#' onClick={logout}>Logout</a>
+                        <Link to="/bit02spa/cart" onClick={cart}>Carrito</Link>
+                        <Link to="#" onClick={logout}>Logout</Link>
                       </div>                      
                     </>
                   :
                     <>
                       <div>
-                        <a href='#' onClick={login}>Login</a>
-                        <a href='#' onClick={signUp}>Registro</a>
+                      <Link to="/bit02spa/login">Login</Link>
+                      <Link to="/bit02spa/register">Register</Link>
                       </div>                      
                     </>
                                           
@@ -138,15 +122,10 @@ function App() {
                     </RouteWatchdog>
                     }
                   />
+                  <Route path='/bit02spa/register' element={<RegisterPage/>}/>
+                  <Route path='/bit02spa/login' element={<LoginPage setCurrentUser={setCurrentUser}/>}/>
                   <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
-        
-
-              <RegisterPage></RegisterPage>
-                
-              
-
-              
             </div>            
 
             <div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 export const RegisterPage = () => {
   return (
-    <form className="register-form">
+    <form className="form">
       <h2>Registro</h2>
       <div className="form-group">
         <label htmlFor="name">Nombre:</label>
