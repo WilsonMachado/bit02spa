@@ -13,7 +13,31 @@ import { NotFoundPage } from './components/Pages/NotFoundPage';
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState(null); // Aquí se alamacenará la sesión del usuario
+  const [currentUser, setCurrentUser] = useState(null); // Aquí se alamacenará la sesión del usuario 
+
+  //** Ciclo de vida */
+
+  //? Montaje
+
+  useEffect(() => {
+    const userLogged = JSON.parse(localStorage.getItem('currentUser'));
+    if(userLogged !== null){
+      setCurrentUser(userLogged);
+    }else{
+      alert('Tenga en cuenta que debe registrarse si quiere acceder a todas la funcionalidades');
+    }
+  }, [])
+  
+
+  //? Actualización
+
+  
+
+  //? Desmontaje 
+
+  //** //////////////////////////////////////////////////////////////////////////// */
+
+  //** Handlers */
 
   const login = (e) => {                   // Función para iniciar sesión
     
@@ -33,35 +57,18 @@ function App() {
 
   };
 
-  //** Ciclo de vida */
-
-  //? Montaje
-  
-  
-
-  //? Actualización
-
-  
-
-  //? Desmontaje
-
- 
-
-  //** //////////////////////////////////////////////////////////////////////////// */
-
-  //** Handlers */
-
     // TODO: borrar la sesión del usuario en el localstorage, pero mantener usuarios registrados. En mi app, una cosa es estar logueado y otra es estar registrado
   const logout = (e) => { // Función para cerrar sesión
     e.preventDefault();
-    setUser(null)
+    localStorage.removeItem('currentUser');
+    setCurrentUser(null);
   }; 
 
   const addNewUser = (name, password) => {
 
     let currentUsers = JSON.parse(localStorage.getItem('registeredUsers')); // Obtener los usuarios actuales
     
-    if (currentUsers !== null){
+    if (currentUsers !== null){                                             // Si hay usuario, agrega el que se registra
       
       currentUsers.push({
         username: name,
@@ -71,8 +78,8 @@ function App() {
       localStorage.setItem('registeredUsers', JSON.stringify( currentUsers ));
       console.log('Usuario agregado');
     
-    }else{
-      alert('En la juega que no hay usuarios registrados');
+    }else{                                                                  // De lo contrario, advierte de que no hay usuarios
+      alert('En la juega que no hay usuarios registrados'); 
     } 
 
   };  
