@@ -96,12 +96,12 @@ function App() {
                 </Routes>
             </div>            
             
-            <div className='deploy-tools'>
-              <button onClick={getUsersFromLocalStorage}>Imprimir usuarios</button>
-            </div>           
+                     
             
           </BrowserRouter>);
-
+           <div className='deploy-tools'>
+           <button onClick={getUsersFromLocalStorage}>Imprimir usuarios</button>
+         </div> 
           
 }
 
