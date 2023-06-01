@@ -12,6 +12,7 @@ import { UserPage } from './components/Pages/UserPage';
 import { NotFoundPage } from './components/Pages/NotFoundPage';
 import { RegisterPage } from './components/Pages/RegisterPage';
 import { LoginPage } from './components/Pages/LoginPage';
+import { LogoutPage } from './components/Pages/LogoutPage';
 
 function App() {
 
@@ -34,14 +35,8 @@ function App() {
 
   //** //////////////////////////////////////////////////////////////////////////// */
 
-  //** Handlers */  
-
-  
-  const logout = (e) => { // Función para cerrar sesión
-    e.preventDefault();
-    localStorage.removeItem('currentUser');
-    setCurrentUser(null);
-  }; 
+  //** Handlers */   
+ 
   
   const cart = (e) =>{
     e.preventDefault();
@@ -71,7 +66,7 @@ function App() {
                     <>
                       <div>
                         <Link to="/bit02spa/cart" onClick={cart}>Cart</Link>
-                        <Link to="#" onClick={logout}>Logout</Link>
+                        <Link to="/bit02spa/logout">Logout</Link>
                       </div>                      
                     </>
                   :
@@ -96,6 +91,7 @@ function App() {
                   />
                   <Route path='/bit02spa/register' element={<RegisterPage/>}/>
                   <Route path='/bit02spa/login' element={<LoginPage setCurrentUser={setCurrentUser}/>}/>
+                  <Route path='/bit02spa/logout' element={<LogoutPage setCurrentUser={setCurrentUser}/>}/>
                   <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
             </div>            
