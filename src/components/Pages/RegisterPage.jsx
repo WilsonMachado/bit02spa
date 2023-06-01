@@ -76,7 +76,7 @@ export const RegisterPage = () => {
 
   return (
     <form className="form">
-      <h2>Registro</h2>
+      <h2>Register a new user</h2>
       <div className="form-group">
         <label htmlFor="name">Username:</label>
         <input type="text" id="name" name="name" value={name} onChange={handleNameChange} />
