@@ -78,20 +78,20 @@ export const RegisterPage = () => {
     <form className="form">
       <h2>Registro</h2>
       <div className="form-group">
-        <label htmlFor="name">Nombre:</label>
+        <label htmlFor="name">Username:</label>
         <input type="text" id="name" name="name" value={name} onChange={handleNameChange} />
       </div>
       <div className="form-group">
-        <label htmlFor="password">Contraseña:</label>
+        <label htmlFor="password">Password:</label>
         <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
 
       </div>
       <div className="form-group">
-        <label htmlFor="confirmPassword">Confirmar Contraseña:</label>
+        <label htmlFor="confirmPassword">Confirm password:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordChange}
         />
       </div>
-      <button type="submit" onClick={login}>Registrarse</button>
+      <button type="submit" onClick={login}>Register!</button>
     </form>
   )
 }
