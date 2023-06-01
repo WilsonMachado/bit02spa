@@ -1,8 +1,7 @@
 import React from 'react'
 
 export const Modal = ({title, text, children}) => {
-    console.log(title);
-    console.log(text);
+  
   return (
     <>
         <div className='modal'>
