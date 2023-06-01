@@ -54,7 +54,7 @@ export const RegisterPage = () => {
             if(registeredUsers === null){
                 localStorage.setItem('registeredUsers', JSON.stringify( [credenciales] ) );
             }else{            
-                //console.table(credenciales);
+                
                 registeredUsers.push(credenciales);
                 localStorage.setItem('registeredUsers', JSON.stringify( registeredUsers ) );
             }

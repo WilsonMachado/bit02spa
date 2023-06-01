@@ -49,7 +49,7 @@ export const LoginPage = ({setCurrentUser}) => {
                         setCurrentUser(credenciales);
                         setValidated(true);                   
                     }else{
-                        console.log("El usuario no está registrado");
+                        alert('El usuario no está registrado');
                     }
                     setName('');
                     setPassword('');
