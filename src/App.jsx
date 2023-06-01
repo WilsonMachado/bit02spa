@@ -31,6 +31,10 @@ function App() {
 
   //? Actualización
 
+  useEffect(() => {
+    console.log("Se actualizó el usuario actual :p")
+  }, [currentUser])
+
   
 
   //? Desmontaje 
@@ -84,37 +88,73 @@ function App() {
 
   };  
   
+  const cart = (e) =>{
+    e.preventDefault();
+    console.log("Vamos pal carrito")
+  }
+  
+  const signUp = (e) =>{
+    e.preventDefault();
+    console.log("Vamos pal registro")
+  }
+  
+
   const getUsersFromLocalStorage = () => {
     console.table(JSON.parse(localStorage.getItem('registeredUsers')));
   };
 
   return (<BrowserRouter> 
           
-            <Navegacion/>
+            <div className='container'>
+              
+              <Navegacion>
+                { 
+                  // TODO: componente formulario que recibe datos de registro y almacena en localstorage
+                  (currentUser !== null) ?
+                    <>
+                      <div>
+                        <a href='#' onClick={cart}>Carrito</a>
+                        <a href='#' onClick={logout}>Logout</a>
+                      </div>                      
+                    </>
+                  :
+                    <>
+                      <div>
+                        <a href='#' onClick={login}>Login</a>
+                        <a href='#' onClick={signUp}>Registro</a>
+                      </div>                      
+                    </>
+                                          
+                }
+              </Navegacion>
+
+                <Routes>
+                  <Route path='/bit02spa' element={<HomePage/>} />
+                  <Route path='/bit02spa/shop' element={<ShopPage/>} />
+                  <Route path='/bit02spa/profile' element={
+                    <RouteWatchdog currentUser={currentUser}>
+                      <UserPage currentUser={currentUser}/>
+                    </RouteWatchdog>
+                  } />
+                  <Route path='*' element={<NotFoundPage/>}/>
+                </Routes>
         
 
-            { // Este botón permite realizar el proceso de login o de logout
-              // TODO: componente formulario que recibe datos de registro y almacena en localstorage
-              currentUser ? <a href='#' onClick={logout}>Logout</a>
-              : <a href='#' onClick={login}>Login</a>
-                    
-            }
+              
+                
+              
 
-            <button onClick={getUsersFromLocalStorage}>Imprimir usuarios</button>
-            <button onClick={() => addNewUser('Sí', 'Funciona')}>Registrar Nuevo usuario</button>
+              
+            </div>            
 
-            <Routes>
-              <Route path='/bit02spa' element={<HomePage/>} />
-              <Route path='/bit02spa/shop' element={<ShopPage/>} />
-              <Route path='/bit02spa/profile' element={
-                <RouteWatchdog currentUser={currentUser}>
-                  <UserPage currentUser={currentUser}/>
-                </RouteWatchdog>
-              } />
-              <Route path='*' element={<NotFoundPage/>}/>
-            </Routes>
+            <div>
+              <button onClick={getUsersFromLocalStorage}>Imprimir usuarios</button>
+              <button onClick={() => addNewUser('Sí', 'Funciona')}>Registrar Nuevo usuario</button>
+            </div>
             
           </BrowserRouter>);
+
+          
 }
 
 export default App

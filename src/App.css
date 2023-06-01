@@ -1,8 +1,9 @@
 *{
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
     max-width: 1024px;
+    font-family: 'Courier Prime', monospace;
 }
 
 html{
@@ -12,18 +13,35 @@ html{
 body{
     font-size: 2rem;
     background-color: #f0f0f0;
-    color: #222222;
+    color: #222222;    
 }
 
 a{
     text-decoration: none;
     color: #484848;
     padding: 10px 20px;
+    
+}
+
+a:hover{
+    text-decoration: none;
+    color: #fff;
+    background-color: #222222;
+       
 }
 
 .navegacion{
-    
-    display: flex;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    margin: 20px 10px;
+    padding: 10px 15px;
+    border: 2px solid #000;   
+}
+
+.navegacion div{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);   
     
 }
+
+
