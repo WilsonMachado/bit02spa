@@ -70,7 +70,7 @@ function App() {
                   (currentUser !== null) ?
                     <>
                       <div>
-                        <Link to="/bit02spa/cart" onClick={cart}>Carrito</Link>
+                        <Link to="/bit02spa/cart" onClick={cart}>Cart</Link>
                         <Link to="#" onClick={logout}>Logout</Link>
                       </div>                      
                     </>
