@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { Navigate } from "react-router"
 
 export const LoginPage = ({setCurrentUser}) => {
 
@@ -7,10 +7,9 @@ export const LoginPage = ({setCurrentUser}) => {
 
         const [name, setName] = useState('');
         const [password, setPassword] = useState('');
+        const [validated, setValidated] = useState(false);
 
     //! //////////////////////////////////////////////////////////////////////////////////
-
-
 
     //** Handlers */
 
@@ -37,18 +36,21 @@ export const LoginPage = ({setCurrentUser}) => {
             
             if(registeredUsers !== null){
                 
-                const validateUser = registeredUsers.some((user) => user.username === credenciales.username && user.password === credenciales.password);
-                
+                const validateUser = registeredUsers.some((user) => user.username === credenciales.username && user.password === credenciales.password);                
                 
                 if(validateUser){                    
-                    console.log("El usuario se encuentra registrado");
+                    localStorage.setItem('currentUser', JSON.stringify( [credenciales] ) );
+                    setCurrentUser(credenciales);
+                    setValidated(true);                   
                 }else{
                     console.log("El usuario no está registrado");
                 }
+                setName('');
+                setPassword('');
+
             }else{
-                alert('Primero hay que registrarse');
-                console.log(name);
-                console.log(password);
+                
+                alert('No hay ningún usuario registrado. Por favor, registre por lo menos uno.');
                 setName('');
                 setPassword('');
             }
@@ -58,19 +60,25 @@ export const LoginPage = ({setCurrentUser}) => {
         };
 
     //** //////////////////////////////////////////////////////////////////////////// */
+ 
+    if(validated){
 
-  return (
-    <form className='form'>
-      <h2>Login</h2>
-      <div className="form-group">
-        <label htmlFor="name">Username:</label>
-        <input type="text" id="name" name="name" value={name} onChange={handleNameChange} />
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
-      </div>
-      <button type="submit" onClick={login}>Login!</button>
-    </form>
-  )
+        return <Navigate to='/bit02spa/profile'/>;
+
+    }else{
+        return (
+            <form className='form'>
+            <h2>Login</h2>
+            <div className="form-group">
+                <label htmlFor="name">Username:</label>
+                <input type="text" id="name" name="name" value={name} onChange={handleNameChange} />
+            </div>
+            <div className="form-group">
+                <label htmlFor="password">Password:</label>
+                <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
+            </div>
+            <button type="submit" onClick={login}>Login!</button>
+            </form>
+        );
+    }
 }

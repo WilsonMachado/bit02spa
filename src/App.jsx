@@ -25,18 +25,10 @@ function App() {
     const userLogged = JSON.parse(localStorage.getItem('currentUser'));
     if(userLogged !== null){
       setCurrentUser(userLogged);
-    }else{
-      alert('Tenga en cuenta que debe registrarse si quiere acceder a todas la funcionalidades');
     }
   }, []) 
 
-  //? Actualización
-
-  useEffect(() => {
-    console.log("Se actualizó el usuario actual :p")
-  }, [currentUser])
-
-  
+  //? Actualización  
 
   //? Desmontaje 
 
@@ -50,26 +42,6 @@ function App() {
     localStorage.removeItem('currentUser');
     setCurrentUser(null);
   }; 
-
-  const addNewUser = (name, password) => {
-
-    let currentUsers = JSON.parse(localStorage.getItem('registeredUsers')); // Obtener los usuarios actuales
-    
-    if (currentUsers !== null){                                             // Si hay usuario, agrega el que se registra
-      
-      currentUsers.push({
-        username: name,
-        password: password
-      });    
-      
-      localStorage.setItem('registeredUsers', JSON.stringify( currentUsers ));
-      console.log('Usuario agregado');
-    
-    }else{                                                                  // De lo contrario, advierte de que no hay usuarios
-      alert('En la juega que no hay usuarios registrados'); 
-    } 
-
-  };  
   
   const cart = (e) =>{
     e.preventDefault();
@@ -130,7 +102,6 @@ function App() {
 
             <div>
               <button onClick={getUsersFromLocalStorage}>Imprimir usuarios</button>
-              <button onClick={() => addNewUser('Sí', 'Funciona')}>Registrar Nuevo usuario</button>
             </div>
             
           </BrowserRouter>);
