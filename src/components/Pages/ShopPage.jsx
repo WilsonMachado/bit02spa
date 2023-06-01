@@ -1,4 +1,5 @@
 import React from 'react'
+import ProductCard from '../ProductCard';
 
 export const ShopPage = () => {
 
@@ -8,14 +9,14 @@ export const ShopPage = () => {
       name: "Crossbow",
       description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure maiores reprehenderit nesciunt cupiditate sint autem distinctio!",
       img: "https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/4f/Arrow_Loaded_Crossbow.png/",
-      price: 10 
+      price: 99.99 
     },
     {
       id: 2,
       name: "Apple",
       description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure maiores reprehenderit nesciunt cupiditate sint autem distinctio!",
       img: "https://static.wikia.nocookie.net/minecraft_gamepedia/images/a/af/Apple_JE3_BE3.png/",
-      price: 10 
+      price: 9.99 
     },
     {
       id: 3,
@@ -90,9 +91,19 @@ export const ShopPage = () => {
   ];
 
   return (
-    <div className='shop-container'>
-      <h2>Our products</h2>
-      <img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/3/3e/Clock_JE3_BE3.gif/" alt="" />
+    <div className='shop-container'>      
+      
+      <h2>Our products</h2>      
+      
+      {products.map((product) => (
+        <ProductCard
+          key={product.id}
+          name={product.name}
+          description={product.description}
+          image={product.img}
+          price={product.price} />          
+      ))}
+        
     </div>
   )
 }
