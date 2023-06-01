@@ -13,7 +13,7 @@ import { NotFoundPage } from './components/Pages/NotFoundPage';
 
 function App() {
 
-  const [user, setUser] = useState(null); // Aquí se alamacenará la sesión del usuario
+  const [currentUser, setCurrentUser] = useState(null); // Aquí se alamacenará la sesión del usuario
 
   const login = (e) => {                   // Función para iniciar sesión
     
@@ -29,7 +29,7 @@ function App() {
     
     localStorage.setItem('currentUser',     JSON.stringify( credenciales ) );
     
-    setUser(credenciales);   
+    setCurrentUser(credenciales);   
 
   };
 
@@ -75,14 +75,11 @@ function App() {
       alert('En la juega que no hay usuarios registrados');
     } 
 
-  };
-
-  
+  };  
   
   const getUsersFromLocalStorage = () => {
     console.table(JSON.parse(localStorage.getItem('registeredUsers')));
   };
-
 
   return (<BrowserRouter> 
           
@@ -91,7 +88,7 @@ function App() {
 
             { // Este botón permite realizar el proceso de login o de logout
               // TODO: componente formulario que recibe datos de registro y almacena en localstorage
-              user ? <a href='#' onClick={logout}>Logout</a>
+              currentUser ? <a href='#' onClick={logout}>Logout</a>
               : <a href='#' onClick={login}>Login</a>
                     
             }
@@ -103,8 +100,8 @@ function App() {
               <Route path='/bit02spa' element={<HomePage/>} />
               <Route path='/bit02spa/shop' element={<ShopPage/>} />
               <Route path='/bit02spa/profile' element={
-                <RouteWatchdog user={user}>
-                  <UserPage/>
+                <RouteWatchdog currentUser={currentUser}>
+                  <UserPage currentUser={currentUser}/>
                 </RouteWatchdog>
               } />
               <Route path='*' element={<NotFoundPage/>}/>
