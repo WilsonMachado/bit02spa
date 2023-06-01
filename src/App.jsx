@@ -96,7 +96,7 @@ function App() {
                 </Routes>
             </div>            
             
-                     
+            <footer>Made with ❤️ by Dabliu</footer>         
             
           </BrowserRouter>);
            <div className='deploy-tools'>

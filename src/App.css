@@ -76,6 +76,8 @@ a:hover{
   align-items: baseline;
   justify-content: start;
 
+  background-color: #f0f0f0;
+
 }
 
 .modal-content{
@@ -116,6 +118,10 @@ a:hover{
 }
 
 /** Estilos para los formularios */
+
+  .form{
+    height: 100vh;
+  }
   
   .form h2 {
     margin: 20px 0;
@@ -161,6 +167,8 @@ a:hover{
 
   /** Estilos para el footer*/
   footer{
+    display: grid;
+
     text-align: center;
   }
 
