@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Navigate } from "react-router"
+import { Link } from "react-router-dom";
+import { Modal } from '../Modal';
 
 export const LoginPage = ({setCurrentUser}) => {
 
@@ -8,6 +10,9 @@ export const LoginPage = ({setCurrentUser}) => {
         const [name, setName] = useState('');
         const [password, setPassword] = useState('');
         const [validated, setValidated] = useState(false);
+        const [mandatoryFields, setMandatoryFields] = useState(false);
+        const [userDoesntExist, setUserDoesntExist] = useState(false);
+        const [emptyUsersObjet, SetEmptyUsersObjet] = useState(false);
 
     //! //////////////////////////////////////////////////////////////////////////////////
 
@@ -24,12 +29,18 @@ export const LoginPage = ({setCurrentUser}) => {
             
         };
 
+        const handlerResetBooleanStates = () =>{
+            setMandatoryFields(false);
+            setUserDoesntExist(false);
+            SetEmptyUsersObjet(false);
+          };
+
         const login = (e) => {                       /** Validar y ejecutar el logueo */ 
             e.preventDefault();
 
             if(name === '' || password === ''){
 
-                alert('Todos los campos son obligatorios');
+                setMandatoryFields(true);
 
             }else{
             
@@ -49,14 +60,14 @@ export const LoginPage = ({setCurrentUser}) => {
                         setCurrentUser(credenciales);
                         setValidated(true);                   
                     }else{
-                        alert('El usuario no está registrado');
+                        setUserDoesntExist(true);
                     }
                     setName('');
                     setPassword('');
 
                 }else{
                     
-                    alert('No hay ningún usuario registrado. Por favor, registre por lo menos uno.');
+                    SetEmptyUsersObjet(true);
                     setName('');
                     setPassword('');
                 }
@@ -72,6 +83,19 @@ export const LoginPage = ({setCurrentUser}) => {
 
         return <Navigate to='/bit02spa/profile'/>;
 
+    } else if(mandatoryFields){
+        return (<Modal title={`Error`} text={"All fields are mandatory."}>
+                    <Link to={"/bit02spa/login"} onClick={handlerResetBooleanStates}>Okay!</Link>
+                </Modal>);
+    }else if(emptyUsersObjet){
+        return (<Modal title={`Error`} text={"There are no registered users. Please register at least one."}>
+                    <Link to={"/bit02spa/register"} onClick={handlerResetBooleanStates}>Okay!</Link>
+                </Modal>);
+    }else if(userDoesntExist){
+        return (<Modal title={`Error`} text={"The user has not yet been registered or incorrect credentials have been entered."}>
+                    <Link to={"/bit02spa/register"}>Register</Link>
+                    <Link to={"/bit02spa/login"} onClick={handlerResetBooleanStates}>Okay!</Link>
+                </Modal>);
     }else{
         return (
             <form className='form'>
