@@ -98,7 +98,7 @@ function App() {
             
             <div className='deploy-tools'>
               <button onClick={getUsersFromLocalStorage}>Imprimir usuarios</button>
-            </div>
+            </div>           
             
           </BrowserRouter>);
 
