@@ -10,6 +10,8 @@ export const RegisterPage = () => {
     const [password, setPassword] = useState('');    
     const [confirmPassword, setConfirmPassword] = useState('');
     const [successRegister, setSuccessRegistered] = useState(false);
+    const [mandatoryFields, setMandatoryFields] = useState(false);
+    const [passwordDontMach, setPasswordDontMach] = useState(false);
 //! //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -31,17 +33,22 @@ export const RegisterPage = () => {
         setConfirmPassword(event.target.value);
       };
 
+    const handlerResetBooleanStates = () =>{
+      setMandatoryFields(false);
+      setPasswordDontMach(false);
+    };
+
     const login = (e) => {                       /** Validar y ejecutar el logueo */ 
         
         e.preventDefault();              
         
         if(name.length === '' || password === '' || confirmPassword === ''){         // Validación de campos no vacíos
         
-            alert("Todos los campos son obligatorios");
+            setMandatoryFields(true);
         
         }else if(password !== confirmPassword){                                      // Validación de passwords iguales   
             
-            alert('Las contraseñas no coinciden');
+            setPasswordDontMach(true);
             setPassword('');
             setConfirmPassword('');
 
@@ -72,12 +79,21 @@ export const RegisterPage = () => {
 
 
   if (successRegister){
-    
+
     return (<Modal title={`Success Registered, ${name}!`} text={"Now, you can log in using your username and password."}>
                 <Link to={"/bit02spa/login"}>Okay!</Link>
             </Modal>);
 
-  }else{
+  }else if (mandatoryFields){
+    return (<Modal title={`Error`} text={"All fields are mandatory."}>
+                <Link to={"/bit02spa/register"} onClick={handlerResetBooleanStates}>Okay!</Link>
+            </Modal>);
+  }else if(passwordDontMach){
+    return (<Modal title={`Error`} text={"Passwords don't match."}>
+                <Link to={"/bit02spa/register"} onClick={handlerResetBooleanStates}>Okay!</Link>
+            </Modal>);
+  }
+  else{
     return (
       <form className="form">
         <h2>Register a new user</h2>
