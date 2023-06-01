@@ -26,33 +26,40 @@ export const LoginPage = ({setCurrentUser}) => {
 
         const login = (e) => {                       /** Validar y ejecutar el logueo */ 
             e.preventDefault();
-            
-            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers'))
-            
-            const credenciales = {
-                username: name,
-                password: password
-            };
-            
-            if(registeredUsers !== null){
-                
-                const validateUser = registeredUsers.some((user) => user.username === credenciales.username && user.password === credenciales.password);                
-                
-                if(validateUser){                    
-                    localStorage.setItem('currentUser', JSON.stringify( [credenciales] ) );
-                    setCurrentUser(credenciales);
-                    setValidated(true);                   
-                }else{
-                    console.log("El usuario no está registrado");
-                }
-                setName('');
-                setPassword('');
+
+            if(name === '' || password === ''){
+
+                alert('Todos los campos son obligatorios');
 
             }else{
+            
+                const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers'))
                 
-                alert('No hay ningún usuario registrado. Por favor, registre por lo menos uno.');
-                setName('');
-                setPassword('');
+                const credenciales = {
+                    username: name,
+                    password: password
+                };
+                
+                if(registeredUsers !== null){
+                    
+                    const validateUser = registeredUsers.some((user) => user.username === credenciales.username && user.password === credenciales.password);                
+                    
+                    if(validateUser){                    
+                        localStorage.setItem('currentUser', JSON.stringify( [credenciales] ) );
+                        setCurrentUser(credenciales);
+                        setValidated(true);                   
+                    }else{
+                        console.log("El usuario no está registrado");
+                    }
+                    setName('');
+                    setPassword('');
+
+                }else{
+                    
+                    alert('No hay ningún usuario registrado. Por favor, registre por lo menos uno.');
+                    setName('');
+                    setPassword('');
+                }
             }
 
                
