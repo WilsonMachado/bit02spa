@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 export const LoginPage = ({setCurrentUser}) => {
@@ -14,36 +14,36 @@ export const LoginPage = ({setCurrentUser}) => {
 
     //** Handlers */
 
-        const handleNameChange = (event) => {       /** Captura username */ 
+        const handleNameChange = (e) => {       /** Captura username */ 
             
-            setName(event.target.value);
+            setName(e.target.value);
             
         };
 
-        const handlePasswordChange = (event) => {   /** Captura password */ 
-            setPassword(event.target.value);
+        const handlePasswordChange = (e) => {   /** Captura password */ 
+            setPassword(e.target.value);
             
         };
 
         const login = (e) => {                       /** Validar y ejecutar el logueo */ 
             e.preventDefault();
-            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers'))            
-            console.table(registeredUsers);
+            
+            const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers'))
+            
+            const credenciales = {
+                username: name,
+                password: password
+            };
+            
             if(registeredUsers !== null){
                 
-                const validateUser = personas.some((persona) => persona.nombre === name);
+                const validateUser = registeredUsers.some((user) => user.username === credenciales.username && user.password === credenciales.password);
                 
-                if(validateUser){
-                    
-                    const credenciales = {
-                        username: name,
-                        password: password
-                    };
-        
-                    localStorage.setItem('registeredUsers', JSON.stringify( [credenciales] ) );    
-                    localStorage.setItem('currentUser',     JSON.stringify( credenciales ) );
-        
-                    setCurrentUser(credenciales);
+                
+                if(validateUser){                    
+                    console.log("El usuario se encuentra registrado");
+                }else{
+                    console.log("El usuario no está registrado");
                 }
             }else{
                 alert('Primero hay que registrarse');
