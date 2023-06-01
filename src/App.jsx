@@ -1,6 +1,6 @@
 import './App.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import {Navegacion} from './components/Navegacion';
@@ -19,10 +19,37 @@ function App() {
     
     // TODO: si hay datos de sesión en localstorage, usuario logueado.
     e.preventDefault();
-    localStorage.setItem('registeredUsers', JSON.stringify( [['Wilson', '1234']] ) );
-    setUser([['Wilson', '1234']]);
+
+    const credenciales = {
+      username: 'Wilson',
+      password: '1234'
+    };
+    
+    localStorage.setItem('registeredUsers', JSON.stringify( [credenciales] ) );
+    
+    localStorage.setItem('currentUser',     JSON.stringify( credenciales ) );
+    
+    setUser(credenciales);   
 
   };
+
+  //** Ciclo de vida */
+
+  //? Montaje
+  
+  
+
+  //? Actualización
+
+  
+
+  //? Desmontaje
+
+ 
+
+  //** //////////////////////////////////////////////////////////////////////////// */
+
+  //** Handlers */
 
     // TODO: borrar la sesión del usuario en el localstorage, pero mantener usuarios registrados. En mi app, una cosa es estar logueado y otra es estar registrado
   const logout = (e) => { // Función para cerrar sesión
@@ -30,14 +57,23 @@ function App() {
     setUser(null)
   }; 
 
-  const addNewUser = () => {
+  const addNewUser = (name, password) => {
 
     let currentUsers = JSON.parse(localStorage.getItem('registeredUsers')); // Obtener los usuarios actuales
-    currentUsers.push(['Daniel', '4321']);
     
-    localStorage.setItem('registeredUsers', JSON.stringify( currentUsers  ));
-
+    if (currentUsers !== null){
+      
+      currentUsers.push({
+        username: name,
+        password: password
+      });    
+      
+      localStorage.setItem('registeredUsers', JSON.stringify( currentUsers ));
       console.log('Usuario agregado');
+    
+    }else{
+      alert('En la juega que no hay usuarios registrados');
+    } 
 
   };
 
@@ -61,7 +97,7 @@ function App() {
             }
 
             <button onClick={getUsersFromLocalStorage}>Imprimir usuarios</button>
-            <button onClick={addNewUser}>Registrar Nuevo usuario</button>
+            <button onClick={() => addNewUser('Sí', 'Funciona')}>Registrar Nuevo usuario</button>
 
             <Routes>
               <Route path='/bit02spa' element={<HomePage/>} />
