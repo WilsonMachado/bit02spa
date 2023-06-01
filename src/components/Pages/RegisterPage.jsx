@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
+import { Link } from "react-router-dom";
+import { Modal } from '../Modal';
 
 export const RegisterPage = () => {
     //! States ///////
@@ -7,6 +9,7 @@ export const RegisterPage = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');    
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [successRegister, setSuccessRegistered] = useState(false);
 //! //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -59,39 +62,41 @@ export const RegisterPage = () => {
                 localStorage.setItem('registeredUsers', JSON.stringify( registeredUsers ) );
             }
 
-            setName('');
-            setPassword('');
-            setConfirmPassword('');
+            setSuccessRegistered(true);
             
-        }
-        
-        
-
-           
+        }         
 
     };
 
 //** //////////////////////////////////////////////////////////////////////////// */
 
 
-  return (
-    <form className="form">
-      <h2>Register a new user</h2>
-      <div className="form-group">
-        <label htmlFor="name">Username:</label>
-        <input type="text" id="name" name="name" value={name} onChange={handleNameChange} />
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Password:</label>
-        <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
+  if (successRegister){
+    
+    return (<Modal title={`Success Registered, ${name}!`} text={"Now, you can log in using your username and password."}>
+                <Link to={"/bit02spa/login"}>Okay!</Link>
+            </Modal>);
 
-      </div>
-      <div className="form-group">
-        <label htmlFor="confirmPassword">Confirm password:</label>
-        <input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordChange}
-        />
-      </div>
-      <button type="submit" onClick={login}>Register!</button>
-    </form>
-  )
+  }else{
+    return (
+      <form className="form">
+        <h2>Register a new user</h2>
+        <div className="form-group">
+          <label htmlFor="name">Username:</label>
+          <input type="text" id="name" name="name" value={name} onChange={handleNameChange} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input type="password" id="password" name="password" value={password} onChange={handlePasswordChange} />
+  
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirm password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={handleConfirmPasswordChange}
+          />
+        </div>
+        <button type="submit" onClick={login}>Register!</button>
+      </form>
+    )
+  }
 }
