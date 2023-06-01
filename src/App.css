@@ -59,25 +59,25 @@ a:hover{
   text-align: center;
 }
 
-.main-title{
-  
-  
+.main-title{  
   font-size: 10rem;
+}
+
+/** Vista de la tienda*/
+
+.shop-container{
+  height: 100vh;
+  text-align: center;
 }
 
 /** Estilos del modal para advertencias*/
 
 .modal{
   width: 100vw;
-  height: 100vh;
-  position: fixed;
-
+  height: 90vh; 
   display: flex;
   align-items: baseline;
   justify-content: start;
-
-  background-color: #f0f0f0;
-
 }
 
 .modal-content{
@@ -167,8 +167,6 @@ a:hover{
 
   /** Estilos para el footer*/
   footer{
-    display: grid;
-
     text-align: center;
   }
 
