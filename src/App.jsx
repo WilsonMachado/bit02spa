@@ -10,6 +10,7 @@ import { HomePage } from './components/Pages/HomePage';
 import { ShopPage } from './components/Pages/ShopPage';  
 import { UserPage } from './components/Pages/UserPage';
 import { NotFoundPage } from './components/Pages/NotFoundPage';
+import { RegisterPage } from './components/Pages/RegisterPage';
 
 function App() {
 
@@ -135,12 +136,13 @@ function App() {
                     <RouteWatchdog currentUser={currentUser}>
                       <UserPage currentUser={currentUser}/>
                     </RouteWatchdog>
-                  } />
+                    }
+                  />
                   <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
         
 
-              
+              <RegisterPage></RegisterPage>
                 
               
 
