@@ -102,7 +102,7 @@ function App() {
                   />
                   <Route path='/bit02spa/register' element={<RegisterPage/>}/>
                   <Route path='/bit02spa/login' element={<LoginPage setCurrentUser={setCurrentUser}/>}/>
-                  <Route path='/bit02spa/logout' element={<LogoutPage cart={cart} setCurrentUser={setCurrentUser}/>}/>
+                  <Route path='/bit02spa/logout' element={<LogoutPage cart={cart} setCart={setCart} setCurrentUser={setCurrentUser} setNumberOfItems={setNumberOfItems}/>}/>
                   <Route path='/bit02spa/cart' element={<CartPage cart={cart} setCart={setCart} numberOfItems={numberOfItems} setNumberOfItems={setNumberOfItems} />}></Route>
                   <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
