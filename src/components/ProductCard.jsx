@@ -5,7 +5,7 @@ const ProductCard = ({ name, description, image, price }) => {
     <div className="card">
       <div className="card-header">        
         <p className="card-price">${price}</p>
-        <span className="material-symbols-outlined">add_shopping_cart</span>     
+        <i className="material-symbols-outlined">add_shopping_cart</i> 
       </div>
       <img src={image} alt={name} className="card-image" />
       <div className="card-content">
