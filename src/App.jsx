@@ -13,6 +13,7 @@ import { NotFoundPage } from './components/Pages/NotFoundPage';
 import { RegisterPage } from './components/Pages/RegisterPage';
 import { LoginPage } from './components/Pages/LoginPage';
 import { LogoutPage } from './components/Pages/LogoutPage';
+import { CartPage } from './components/Pages/CartPage';
 
 function App() {
 
@@ -96,6 +97,7 @@ function App() {
                   <Route path='/bit02spa/register' element={<RegisterPage/>}/>
                   <Route path='/bit02spa/login' element={<LoginPage setCurrentUser={setCurrentUser}/>}/>
                   <Route path='/bit02spa/logout' element={<LogoutPage setCurrentUser={setCurrentUser}/>}/>
+                  <Route path='/bit02spa/cart' element={<CartPage />}></Route>
                   <Route path='*' element={<NotFoundPage/>}/>
                 </Routes>
             </div>            
