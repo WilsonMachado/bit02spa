@@ -43,11 +43,11 @@ export const CartPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => {
 
     //** //////////////////////////////////////////////////////////////////////////// */
 
-    const name = "Jhon Die";
+    const name = JSON.parse(localStorage.getItem('currentUser'))[0].username;
 
     if(checkout){
 
-      return (<Modal title={`Thanks for your order, ${name}`} text={"We have received your order! We are processing it and will contact you soon with the details. You can continue to enjoy our store."}>
+      return (<Modal title={`Thanks for your order, ${name}!`} text={"We have received your order! We are processing it and will contact you soon with the details. You can continue to enjoy our store."}>
                 <Link to={"/bit02spa"}>Okay!</Link>
               </Modal>);
   
