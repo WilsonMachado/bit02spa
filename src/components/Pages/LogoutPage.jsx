@@ -49,16 +49,18 @@ export const LogoutPage = ({cart, setCart, setCurrentUser, setNumberOfItems}) =>
             userLoggingOut.cart = cart; 
 
             console.table(userLoggingOut.cart);
-            
+
             localStorage.setItem('registeredUsers', JSON.stringify( registeredUsers ) );
             console.log(JSON.parse(localStorage.getItem('registeredUsers')))
 
-            /*
+            setCart([]);
+            setNumberOfItems(0);
 
             localStorage.removeItem('currentUser');
-            //TODO: Una vez terminado, se espera que aquí se borre el item de carrito después de hacer logout
+            localStorage.removeItem('cart');
+
             setCurrentUser(null);
-            setLogout(true); */
+            setLogout(true); 
         };
     
     //** //////////////////////////////////////////////////////////////////////////// */
