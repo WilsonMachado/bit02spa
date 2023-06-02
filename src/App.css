@@ -207,6 +207,14 @@ a:hover{
   
 }
 
+.cart-options{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0px;
+}
+
 /** Estilos del modal para advertencias*/
 
 .modal{

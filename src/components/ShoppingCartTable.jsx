@@ -42,36 +42,38 @@ export const ShoppingCartTable = ({ cart, setCart, setNumberOfItems, children })
 
     return (
       <>
-        <table className="shopping-cart-table">
-            <thead>
-            <tr>
-                <th>Item</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-            </tr>
-            </thead>
-            <tbody>
-            {cart.map((item, index) => (
-                <tr key={index}>
-                <td>
-                    <img src={item.img} alt={item.name} style={{ width: '50px', height: '50px' }} />
-                </td>
-                <td className="name-cell">{item.name}</td>
-                <td>${item.price}</td>
-                <td>{item.quantity}</td>
-                    <td>
-                        <div className="options-bill-item">
-                            <i className="material-symbols-outlined" onClick={() => handlerAddItemToCart(index)}>add</i>
-                            <i className="material-symbols-outlined" onClick={() => handlerRemoveItemToCart(index)}>remove</i>
-                        </div>
-                    </td>
-                </tr>
-            ))}
-            </tbody>
-        </table>
+        <div className="shopping-table-container">
         <div className="cart-options">
-            {children}
+                {children}
+            </div>
+            <table className="shopping-cart-table">
+                <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                </thead>
+                <tbody>
+                {cart.map((item, index) => (
+                    <tr key={index}>
+                    <td>
+                        <img src={item.img} alt={item.name} style={{ width: '50px', height: '50px' }} />
+                    </td>
+                    <td className="name-cell">{item.name}</td>
+                    <td>${item.price}</td>
+                    <td>{item.quantity}</td>
+                        <td>
+                            <div className="options-bill-item">
+                                <i className="material-symbols-outlined" onClick={() => handlerAddItemToCart(index)}>add</i>
+                                <i className="material-symbols-outlined" onClick={() => handlerRemoveItemToCart(index)}>remove</i>
+                            </div>
+                        </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>            
         </div>
       </>
     );
