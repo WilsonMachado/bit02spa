@@ -188,6 +188,25 @@ a:hover{
   font-size: 1.5rem;
 }
 
+.options-bill-item{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-evenly;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.options-bill-item i{
+  font-size: 3rem;
+  border-radius: 5px;
+}
+.options-bill-item i:hover{
+  color: #fff;
+  background-color: #222222;
+  border-radius: 10px;
+  
+}
+
 /** Estilos del modal para advertencias*/
 
 .modal{

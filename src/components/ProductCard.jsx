@@ -37,16 +37,6 @@ const ProductCard = ({ index, name, description, image, price, cart, setCart, nu
 
     const currentQuatityItems = numberOfItems;
     setNumberOfItems(currentQuatityItems + 1);
-
-    
-
-    
-    
-    // Crea una nueva instancia del arreglo cart con el producto agregado
-   // const updatedCart = [...cart, product];
-
-    // Actualiza el estado del carrito utilizando setCart
-    //setCart(updatedCart);
   };
 
   //** //////////////////////////////////////////////////////////////////////////// */
