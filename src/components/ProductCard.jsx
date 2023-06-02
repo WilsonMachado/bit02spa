@@ -1,11 +1,18 @@
-import React from 'react';
+const ProductCard = ({ index, name, description, image, price, cart, setCart, products}) => {  
 
-const ProductCard = ({ index, name, description, image, price }) => {
-  
+
   //** Handlers */
   
   const handlerAddItemToCard = () => {
-    console.log(`Agregando item al carrito con nombre = ${index}`);
+
+    // Obtiene el producto actual según el índice
+    const product = products[index];
+    
+    // Crea una nueva instancia del arreglo cart con el producto agregado
+    const updatedCart = [...cart, product];
+
+    // Actualiza el estado del carrito utilizando setCart
+    setCart(updatedCart);
   };
 
   //** //////////////////////////////////////////////////////////////////////////// */
