@@ -44,11 +44,6 @@ function App() {
     console.log("Vamos pal carrito")
   }
   
-  const signUp = (e) =>{
-    e.preventDefault();
-    console.log("Vamos pal registro")
-  }
-  
 
   const getUsersFromLocalStorage = () => {
     console.table(JSON.parse(localStorage.getItem('registeredUsers')));

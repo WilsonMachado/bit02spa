@@ -132,6 +132,40 @@ a:hover{
   font-size: 1.5rem;
 }
 
+/** Vista del perfil de usuario */
+
+.user-container{
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 20px;
+
+  align-items: center;
+  justify-content: center;
+
+}
+
+.user-container img{
+
+  border-radius: 50%;
+
+}
+
+.user-container h2{
+  padding-bottom: 50px;
+}
+
+.profile-description{
+  display: grid;
+  padding: 0 40px;
+}
+
+.profile-description p{
+  text-align: justify;
+}
+
 /** Estilos del modal para advertencias*/
 
 .modal{
