@@ -100,12 +100,13 @@ a:hover{
 .card-header p{
   font-size: 3.5rem;
   margin-right: 10px; /* Espacio entre el párrafo y el enlace */
+  margin-left: auto;
 }
 
 .card-header a{
   font-size: 2.7rem;
   border-radius: 5px;
-  margin-left: 20px; /* Empuja el enlace hacia la derecha */
+  margin-left: 10px; /* Empuja el enlace hacia la derecha */
   margin-right: auto; /* Espacio entre el enlace y el párrafo */
 }
 
