@@ -169,8 +169,8 @@ a:hover{
 /** Vista de carrito */
 
 .cart-container{
-  width: 100vw; 
-
+  width: 100vw;
+  margin-bottom: 100px;
 }
 
 .cart-container h2{
