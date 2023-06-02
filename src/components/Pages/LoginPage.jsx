@@ -46,18 +46,19 @@ export const LoginPage = ({setCurrentUser}) => {
             
                 const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers'))
                 
-                const credenciales = {
+                const userLogging = {
                     username: name,
-                    password: password
+                    password: password,
+                    cart: null
                 };
                 
                 if(registeredUsers !== null){
                     
-                    const validateUser = registeredUsers.some((user) => user.username === credenciales.username && user.password === credenciales.password);                
+                    const validateUser = registeredUsers.some((user) => user.username === userLogging.username && user.password === userLogging.password);                
                     
                     if(validateUser){                    
-                        localStorage.setItem('currentUser', JSON.stringify( [credenciales] ) );
-                        setCurrentUser(credenciales);
+                        localStorage.setItem('currentUser', JSON.stringify( [userLogging] ) );
+                        setCurrentUser(userLogging);
                         setValidated(true);                   
                     }else{
                         setUserDoesntExist(true);
