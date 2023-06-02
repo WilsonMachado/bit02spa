@@ -75,6 +75,7 @@ function App() {
                   (currentUser !== null) ?
                     <>
                       <div>
+                        <Link to='/bit02spa/profile'>Profile</Link>
                         <Link to="/bit02spa/cart">{`Cart(${numberOfItems})`}</Link>
                         <Link to="/bit02spa/logout">Logout</Link>
                       </div>                      

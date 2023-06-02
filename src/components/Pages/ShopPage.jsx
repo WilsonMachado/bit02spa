@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ProductCard from '../ProductCard';
+import { Link } from 'react-router-dom';
+import { Modal } from '../Modal';
 
 const products = [
   {
@@ -90,6 +92,12 @@ const products = [
 
 export const ShopPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => { 
 
+    //! States ///////
+  
+    const [userLogged, setUserLogged] = useState(false);
+    
+    //! //////////////////////////////////////////////////////////////////////////////////
+
     //** Ciclo de vida */
 
     //? Montaje
@@ -99,6 +107,11 @@ export const ShopPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => {
       if(currentCart !== null){
         setCart(currentCart);
       }
+
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));      
+      setUserLogged(currentUser !== null);
+
+
     }, [])  
 
     //? Actualización  
@@ -119,27 +132,36 @@ export const ShopPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => {
 
     //? Desmontaje 
 
-  return (
-    <div className='shop-container'>      
-      
-      <h2>Our products</h2>      
-      
-      {products.map((product, index) => (
-        <ProductCard
-          key={index}
-          index={index}
-          name={product.name}
-          description={product.description}
-          image={product.img}
-          price={product.price}
-          
-          cart={cart}
-          setCart={setCart}
-          numberOfItems={numberOfItems}
-          setNumberOfItems={setNumberOfItems} 
-          products={products}/>          
-      ))}
+    //? //////////////////////////////////////////////////////////////////////////////////
+
+  if (!userLogged){
+    return (<Modal title={"Wow, wow, wow!"} text={"Take it easy, warrior! First, we need you to register or log in to manage your purchases and orders."}>
+              <Link to={"/bit02spa/register"}>Register</Link>
+              <Link to={"/bit02spa/login"}>Login</Link>
+            </Modal>);
+  }else{
+    return (
+      <div className='shop-container'>      
         
-    </div>
-  )
+        <h2>Our products</h2>      
+        
+        {products.map((product, index) => (
+          <ProductCard
+            key={index}
+            index={index}
+            name={product.name}
+            description={product.description}
+            image={product.img}
+            price={product.price}
+            
+            cart={cart}
+            setCart={setCart}
+            numberOfItems={numberOfItems}
+            setNumberOfItems={setNumberOfItems} 
+            products={products}/>          
+        ))}
+          
+      </div>
+    );
+  }
 }
