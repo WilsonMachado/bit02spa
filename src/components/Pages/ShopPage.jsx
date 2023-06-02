@@ -143,8 +143,6 @@ export const ShopPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => {
           setNumberOfItems={setNumberOfItems} 
           products={products}/>          
       ))}
-
-      <button onClick={handlerShowCart}>Mostrar carrito</button>
         
     </div>
   )
