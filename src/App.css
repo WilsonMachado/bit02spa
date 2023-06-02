@@ -320,6 +320,18 @@ a:hover{
     background-color: #222222;
   }
 
+  /** Vista del 404 page not found*/
+
+  .page-404-container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("https://cdn.dribbble.com/users/1107612/screenshots/4602580/media/e445db9451cf2159a9a6f9c35902bbc9.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+  }
+
   /*! Únicamente para mejorar el aspecto de los botones que pongo para desarrollo */
 
   .deploy-tools{
