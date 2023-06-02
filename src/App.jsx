@@ -96,7 +96,7 @@ function App() {
                   <Route path='/bit02spa/shop' element={<ShopPage cart={cart} setCart={setCart} numberOfItems={numberOfItems} setNumberOfItems={setNumberOfItems}/>} />
                   <Route path='/bit02spa/profile' element={
                     <RouteWatchdog currentUser={currentUser}>
-                      <UserPage setNumberOfItems={setNumberOfItems} />
+                      <UserPage setCart={setCart} setNumberOfItems={setNumberOfItems} />
                     </RouteWatchdog>
                     }
                   />

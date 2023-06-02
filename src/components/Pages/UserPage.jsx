@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const UserPage = ({setNumberOfItems}) => {
+export const UserPage = ({setCart, setNumberOfItems}) => {
 
   //** Ciclo de vida */
 
@@ -8,10 +8,10 @@ export const UserPage = ({setNumberOfItems}) => {
 
     useEffect(() => {
       
-      const currentCart = JSON.parse(localStorage.getItem('cart'));
+      const currentCart = JSON.parse(localStorage.getItem('currentUser'))[0].cart;
       
       if(currentCart !== null){     // Si existe el cart en el localstorage, se obtiene la cantidad de items   
-                                    
+          setCart(currentCart);                          
           let suma = 0;
           for (let i = 0; i < currentCart.length; i++){
             suma += currentCart[i].quantity;
