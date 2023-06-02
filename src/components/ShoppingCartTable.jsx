@@ -2,8 +2,6 @@ import { useEffect } from 'react';
 
 export const ShoppingCartTable = ({ cart, setCart, setNumberOfItems, children }) => {
 
-      //? Desmontaje 
-
     //** Handlers */
 
     const handlerAddItemToCart = (index) => {
