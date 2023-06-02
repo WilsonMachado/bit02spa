@@ -1,6 +1,32 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 export const ShoppingCartTable = ({ cart, setCart, setNumberOfItems, children }) => {
+    
+    //! States ///////
+
+    const [total, setTotal] = useState(0);
+
+    //! //////////////////////////////////////////////////////////////////////////////////
+
+    //** Ciclo de vida */
+
+  //? Montaje
+
+  //? Actualización
+  
+  useEffect(() => {           // Si se realizan cambios en el carrito, se actualiza precio
+                                    
+    let suma = 0;
+    for (let i = 0; i < cart.length; i++){
+    suma += cart[i].quantity * cart[i].price;
+    }
+    setTotal(suma.toFixed(2));      
+
+  }, [cart]); 
+
+  //? Desmontaje 
+
+  //** //////////////////////////////////////////////////////////////////////////// */
 
     //** Handlers */
 
@@ -73,7 +99,10 @@ export const ShoppingCartTable = ({ cart, setCart, setNumberOfItems, children })
                     </tr>
                 ))}
                 </tbody>
-            </table>            
+            </table>  
+            <div className="total-bill">
+                <h3>Total: ${total}</h3>
+            </div>          
         </div>
       </>
     );

@@ -228,6 +228,12 @@ a:hover{
   color: #fff;
 }
 
+.total-bill{
+  text-align: center;
+  margin: 30px;
+  font-size: 3rem;
+}
+
 /** Estilos del modal para advertencias*/
 
 .modal{
