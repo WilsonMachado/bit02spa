@@ -1,4 +1,47 @@
-export const ShoppingCartTable = ({ cartItems, children }) => {
+import { useEffect } from 'react';
+
+export const ShoppingCartTable = ({ cart, setCart, setNumberOfItems, children }) => {
+
+      //? Desmontaje 
+
+    //** Handlers */
+
+    const handlerAddItemToCart = (index) => {
+        
+        let changeCart = [...cart];        
+        changeCart[index].quantity += 1;
+        localStorage.setItem('cart', JSON.stringify(changeCart));
+        
+        
+        let suma = 0;
+
+        for (let i = 0; i < changeCart.length; i++){
+        suma += changeCart[i].quantity;
+        }
+
+        setNumberOfItems(suma);       
+        setCart(changeCart);
+    };
+    
+    const handlerRemoveItemToCart = (index) => {
+
+        let changeCart = [...cart];        
+        changeCart[index].quantity -= 1; 
+        if (changeCart[index].quantity == 0) changeCart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(changeCart));
+        
+        
+        let suma = 0;
+
+        for (let i = 0; i < changeCart.length; i++){
+        suma += changeCart[i].quantity;
+        }
+        
+        setNumberOfItems(suma);       
+        setCart(changeCart);
+    };
+    
+
     return (
       <>
         <table className="shopping-cart-table">
@@ -11,7 +54,7 @@ export const ShoppingCartTable = ({ cartItems, children }) => {
             </tr>
             </thead>
             <tbody>
-            {cartItems.map((item, index) => (
+            {cart.map((item, index) => (
                 <tr key={index}>
                 <td>
                     <img src={item.img} alt={item.name} style={{ width: '50px', height: '50px' }} />
@@ -21,8 +64,8 @@ export const ShoppingCartTable = ({ cartItems, children }) => {
                 <td>{item.quantity}</td>
                     <td>
                         <div className="options-bill-item">
-                            <i class="material-symbols-outlined">add</i>
-                            <i class="material-symbols-outlined">remove</i>
+                            <i className="material-symbols-outlined" onClick={() => handlerAddItemToCart(index)}>add</i>
+                            <i className="material-symbols-outlined" onClick={() => handlerRemoveItemToCart(index)}>remove</i>
                         </div>
                     </td>
                 </tr>

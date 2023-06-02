@@ -29,10 +29,8 @@ const ProductCard = ({ index, name, description, image, price, cart, setCart, nu
       
       const changeCart = [...cart];
       changeCart[indexRepeatedItem].quantity += 1; 
-      setCart(changeCart);                                              // Y solo se actualiza la cantidad
-       
-      
-      
+      setCart(changeCart);                                            // Y solo se actualiza la cantidad
+
     }
 
     const currentQuatityItems = numberOfItems;

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ShoppingCartTable } from '../ShoppingCartTable'
 
-export const CartPage = ({cart, setCart}) => {
+export const CartPage = ({cart, setCart, setNumberOfItems}) => {
 
     //** Ciclo de vida */
 
@@ -22,7 +22,7 @@ export const CartPage = ({cart, setCart}) => {
   return (
     <div className="cart-container">
         <h2>Bill</h2>
-        <ShoppingCartTable cartItems={cart}>
+        <ShoppingCartTable cart={cart} setCart={setCart} setNumberOfItems={setNumberOfItems}>
             <button>Clear cart</button>
             <button>Checkout</button>
         </ShoppingCartTable>
