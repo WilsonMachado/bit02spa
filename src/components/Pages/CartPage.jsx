@@ -45,19 +45,19 @@ export const CartPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => {
 
     const name = "Jhon Die";
 
-    if(numberOfItems == 0){
+    if(checkout){
+
+      return (<Modal title={`Thanks for your order, ${name}`} text={"We have received your order! We are processing it and will contact you soon with the details. You can continue to enjoy our store."}>
+                <Link to={"/bit02spa"}>Okay!</Link>
+              </Modal>);
+  
+    }else if(numberOfItems == 0){
 
     return (<Modal title={`Ups!`} text={"It looks like your cart is empty. We invite you to go to our store and choose something to your liking ;)"}>
               <Link to={"/bit02spa/shop"}>Go to Store</Link>
             </Modal>);
 
-  } else if(checkout){
-
-    return (<Modal title={`Thanks for your order, ${name}`} text={"We have received your order! We are processing it and will contact you soon with the details. You can continue to enjoy our store."}>
-              <Link to={"/bit02spa"}>Okay!</Link>
-            </Modal>);
-
-  }else{
+  } else{
     return (
       <div className="cart-container">
           <h2>Bill</h2>
