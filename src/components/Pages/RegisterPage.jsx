@@ -57,6 +57,7 @@ export const RegisterPage = () => {
             let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')); // Obtener los usuarios actuales
 
             const credenciales = {
+                id: (registeredUsers === null) ? 0 : registeredUsers.length,
                 username: name,
                 password: password,
                 cart: null
