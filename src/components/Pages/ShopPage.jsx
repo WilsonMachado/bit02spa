@@ -88,7 +88,7 @@ const products = [
   },
 ];
 
-export const ShopPage = () => {
+export const ShopPage = ({numberOfItems, setNumberOfItems}) => {
 
   //! States ///////
     const [cart, setCart] = useState([]);
@@ -111,6 +111,12 @@ export const ShopPage = () => {
       
       if(cart.length > 0){                                  //* Para garantizar que no vea el cambio en [cart] durante el cambio de contexto
         localStorage.setItem('cart', JSON.stringify(cart));
+        let suma = 0;
+        for (let i = 0; i < cart.length; i++){
+          suma += cart[i].quantity;
+        }
+        setNumberOfItems(suma);
+
       }
       
     }, [cart]) 
@@ -136,7 +142,9 @@ export const ShopPage = () => {
           price={product.price}
           
           cart={cart}
-          setCart={setCart} 
+          setCart={setCart}
+          numberOfItems={numberOfItems}
+          setNumberOfItems={setNumberOfItems} 
           products={products}/>          
       ))}
 

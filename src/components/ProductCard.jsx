@@ -1,4 +1,4 @@
-const ProductCard = ({ index, name, description, image, price, cart, setCart, products}) => {  
+const ProductCard = ({ index, name, description, image, price, cart, setCart, numberOfItems, setNumberOfItems, products}) => {  
 
 
   //** Handlers */
@@ -20,7 +20,7 @@ const ProductCard = ({ index, name, description, image, price, cart, setCart, pr
       
       const updatedCart = [...cart, product];
       setCart(updatedCart);                   // Y se actualiza el carriento con el nuevo objeto
-    
+      
     }else{
       
       const indexRepeatedItem = cart.findIndex((objeto, key) => {       // Se busca el index del item repetido en el arreglo de carrito
@@ -30,9 +30,13 @@ const ProductCard = ({ index, name, description, image, price, cart, setCart, pr
       const changeCart = [...cart];
       changeCart[indexRepeatedItem].quantity += 1; 
       setCart(changeCart);                                              // Y solo se actualiza la cantidad
+       
       
       
     }
+
+    const currentQuatityItems = numberOfItems;
+    setNumberOfItems(currentQuatityItems + 1);
 
     
 

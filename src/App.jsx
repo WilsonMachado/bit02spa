@@ -17,6 +17,7 @@ import { LogoutPage } from './components/Pages/LogoutPage';
 function App() {
 
   const [currentUser, setCurrentUser] = useState(null); // Aquí se alamacenará la sesión del usuario 
+  const [numberOfItems, setNumberOfItems] = useState(0); // Aquí se alamacenará la cantidad de items en el carrito
 
   //** Ciclo de vida */
 
@@ -65,7 +66,7 @@ function App() {
                   (currentUser !== null) ?
                     <>
                       <div>
-                        <Link to="/bit02spa/cart" onClick={cart}>Cart</Link>
+                        <Link to="/bit02spa/cart" onClick={cart}>{`Cart(${numberOfItems})`}</Link>
                         <Link to="/bit02spa/logout">Logout</Link>
                       </div>                      
                     </>
@@ -82,7 +83,7 @@ function App() {
 
                 <Routes>
                   <Route path='/bit02spa' element={<HomePage/>} />
-                  <Route path='/bit02spa/shop' element={<ShopPage/>} />
+                  <Route path='/bit02spa/shop' element={<ShopPage numberOfItems={numberOfItems} setNumberOfItems={setNumberOfItems}/>} />
                   <Route path='/bit02spa/profile' element={
                     <RouteWatchdog currentUser={currentUser}>
                       <UserPage currentUser={currentUser}/>
