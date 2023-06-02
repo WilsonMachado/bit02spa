@@ -95,9 +95,10 @@ export const ShopPage = () => {
       
       <h2>Our products</h2>      
       
-      {products.map((product) => (
+      {products.map((product, index) => (
         <ProductCard
-          key={product.id}
+          key={index}
+          index={index}
           name={product.name}
           description={product.description}
           image={product.img}
