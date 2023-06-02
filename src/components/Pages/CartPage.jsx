@@ -1,8 +1,15 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ShoppingCartTable } from '../ShoppingCartTable';
 import { Link } from 'react-router-dom';
+import { Modal } from '../Modal';
 
 export const CartPage = ({cart, setCart, setNumberOfItems}) => {
+
+    //! States ///////
+    
+    const [checkout, setCheckout] = useState(false);
+    
+    //! //////////////////////////////////////////////////////////////////////////////////
 
     //** Ciclo de vida */
 
@@ -27,16 +34,32 @@ export const CartPage = ({cart, setCart, setNumberOfItems}) => {
       localStorage.setItem('cart', JSON.stringify([]));
     }
 
+    const handlerCheckOut = () => {
+
+      handlerRemoveAllCartItems();
+      setCheckout(true);
+
+    }
+
     //** //////////////////////////////////////////////////////////////////////////// */
 
+    const name = "Jhon Die";
 
-  return (
-    <div className="cart-container">
-        <h2>Bill</h2>
-        <ShoppingCartTable cart={cart} setCart={setCart} setNumberOfItems={setNumberOfItems}>
-            <Link onClick={handlerRemoveAllCartItems}>Clear cart</Link>
-            <Link onClick={() => console.log('Vamos al pago')}>Checkout!</Link>
-        </ShoppingCartTable>
-    </div>
-  )
+  if(checkout){
+
+    return (<Modal title={`Thanks for your order, ${name}`} text={"We have received your order! We are processing it and will contact you soon with the details. You can continue to enjoy our store."}>
+              <Link to={"/bit02spa"}>Okay!</Link>
+            </Modal>);
+
+  }else{
+    return (
+      <div className="cart-container">
+          <h2>Bill</h2>
+          <ShoppingCartTable cart={cart} setCart={setCart} setNumberOfItems={setNumberOfItems}>
+              <Link onClick={handlerRemoveAllCartItems}>Clear cart</Link>
+              <Link onClick={handlerCheckOut}>Checkout!</Link>
+          </ShoppingCartTable>
+      </div>
+    )
+  }
 }
