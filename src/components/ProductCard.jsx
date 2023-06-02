@@ -23,13 +23,13 @@ const ProductCard = ({ index, name, description, image, price, cart, setCart, pr
     
     }else{
       
-      const indexRepeatedItem = cart.findIndex((objeto, key) => {       // Se busca el index en el arreglo de carrito
+      const indexRepeatedItem = cart.findIndex((objeto, key) => {       // Se busca el index del item repetido en el arreglo de carrito
         return objeto.id === products[index].id && cart.findIndex((obj, i) => i !== key && obj.id === products[index].id) !== +1;
       });                                           
       
       const changeCart = [...cart];
       changeCart[indexRepeatedItem].quantity += 1; 
-      setCart(changeCart);                                              // De lo contrario, solo se actualiza la cantidad
+      setCart(changeCart);                                              // Y solo se actualiza la cantidad
       
       
     }
