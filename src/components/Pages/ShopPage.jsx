@@ -109,7 +109,7 @@ export const ShopPage = () => {
 
     useEffect(() => {
       
-      if(cart.length > 0){
+      if(cart.length > 0){                                  //* Para garantizar que no vea el cambio en [cart] durante el cambio de contexto
         localStorage.setItem('cart', JSON.stringify(cart));
       }
       

@@ -4,15 +4,45 @@ const ProductCard = ({ index, name, description, image, price, cart, setCart, pr
   //** Handlers */
   
   const handlerAddItemToCard = () => {
+    
+    const isItemInCart = cart.filter(objeto => objeto.id === products[index].id); // Verifica si el producto que se desea agregar ya estaba en el carrito
+    
+    if(isItemInCart.length == 0){         // Si el prodcuto no se encuentra     
+       
+      const product = {                   // Es la primera vez que agregará el producto al carrito
+        id: products[index].id,
+        quantity: 1,
+        img: products[index].img,
+        name: products[index].name,
+        price: products[index].price,
+  
+      };   
+      
+      const updatedCart = [...cart, product];
+      setCart(updatedCart);                   // Y se actualiza el carriento con el nuevo objeto
+    
+    }else{
+      
+      const indexRepeatedItem = cart.findIndex((objeto, key) => {       // Se busca el index en el arreglo de carrito
+        return objeto.id === products[index].id && cart.findIndex((obj, i) => i !== key && obj.id === products[index].id) !== +1;
+      });                                           
+      
+      const changeCart = [...cart];
+      changeCart[indexRepeatedItem].quantity += 1; 
+      setCart(changeCart);                                              // De lo contrario, solo se actualiza la cantidad
+      
+      
+    }
 
-    // Obtiene el producto actual según el índice
-    const product = products[index];
+    
+
+    
     
     // Crea una nueva instancia del arreglo cart con el producto agregado
-    const updatedCart = [...cart, product];
+   // const updatedCart = [...cart, product];
 
     // Actualiza el estado del carrito utilizando setCart
-    setCart(updatedCart);
+    //setCart(updatedCart);
   };
 
   //** //////////////////////////////////////////////////////////////////////////// */
