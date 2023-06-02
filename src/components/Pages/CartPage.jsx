@@ -45,12 +45,7 @@ export const CartPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => {
 
     const name = "Jhon Die";
 
-    if (userLogged){
-      return (<Modal title={"Wow, wow, wow!"} text={"Take it easy, warrior! First, we need you to register or log in to manage your purchases and orders."}>
-                <Link to={"/bit02spa/register"}>Register</Link>
-                <Link to={"/bit02spa/login"}>Login</Link>
-              </Modal>);
-    }else if(numberOfItems == 0){
+    if(numberOfItems == 0){
 
     return (<Modal title={`Ups!`} text={"It looks like your cart is empty. We invite you to go to our store and choose something to your liking ;)"}>
               <Link to={"/bit02spa/shop"}>Go to Store</Link>
