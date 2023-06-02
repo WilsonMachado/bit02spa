@@ -135,7 +135,7 @@ export const ShopPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => {
     //? //////////////////////////////////////////////////////////////////////////////////
 
   if (!userLogged){
-    return (<Modal title={"Wow, wow, wow!"} text={"Take it easy, warrior! First, we need you to register or log in to manage your purchases and orders."}>
+    return (<Modal title={"Wow, wow, wow!"} text={"Take it easy, warrior! First, we need you to register and/or log in to manage your orders."}>
               <Link to={"/bit02spa/register"}>Register</Link>
               <Link to={"/bit02spa/login"}>Login</Link>
             </Modal>);
