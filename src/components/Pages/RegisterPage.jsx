@@ -58,7 +58,8 @@ export const RegisterPage = () => {
 
             const credenciales = {
                 username: name,
-                password: password
+                password: password,
+                cart: null
             };
             
             if(registeredUsers === null){
