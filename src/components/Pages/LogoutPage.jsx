@@ -15,8 +15,18 @@ export const LogoutPage = ({cart, setCurrentUser}) => {
 
         const handlerLogout = (e) => { // Función para cerrar sesión
             e.preventDefault();
-            console.table(cart);
+            
+            
+            console.table(cart); //TODO: Esto es para verificar, se debe eliminar también
+
+            //* La idea de esta lógica es que se almacene el actual carrito en el respectivo lugar de cada usuario registrado. Así, hacer persistente su carrito
+
+            
+
+            
+
             localStorage.removeItem('currentUser');
+            //TODO: Una vez terminado, se espera que aquí se borre el item de carrito después de hacer logout
             setCurrentUser(null);
             setLogout(true);
         };
