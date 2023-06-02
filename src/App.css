@@ -37,7 +37,7 @@ a:hover{
 
 .navegacion{
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(3, 1fr); 
     margin: 20px 0px;
     padding: 10px 15px;
     border: 2px solid #000;
@@ -46,8 +46,8 @@ a:hover{
 
 .navegacion div{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-content: center;   
+    grid-template-columns: repeat(3, 1fr);
+    align-content: center;  
     
 }
 
