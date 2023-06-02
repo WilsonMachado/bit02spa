@@ -3,7 +3,7 @@ import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import { Modal } from '../Modal';
 
-export const LogoutPage = ({setCurrentUser}) => {
+export const LogoutPage = ({cart, setCurrentUser}) => {
 
     //! States ///////
 
@@ -15,6 +15,7 @@ export const LogoutPage = ({setCurrentUser}) => {
 
         const handlerLogout = (e) => { // Función para cerrar sesión
             e.preventDefault();
+            console.table(cart);
             localStorage.removeItem('currentUser');
             setCurrentUser(null);
             setLogout(true);
