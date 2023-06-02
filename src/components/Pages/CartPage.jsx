@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { ShoppingCartTable } from '../ShoppingCartTable'
+import { ShoppingCartTable } from '../ShoppingCartTable';
+import { Link } from 'react-router-dom';
 
 export const CartPage = ({cart, setCart, setNumberOfItems}) => {
 
@@ -23,8 +24,8 @@ export const CartPage = ({cart, setCart, setNumberOfItems}) => {
     <div className="cart-container">
         <h2>Bill</h2>
         <ShoppingCartTable cart={cart} setCart={setCart} setNumberOfItems={setNumberOfItems}>
-            <button>Clear cart</button>
-            <button>Checkout</button>
+            <Link onClick={() => console.log('Limpiando carrito')}>Clear cart</Link>
+            <Link onClick={() => console.log('Vamos al pago')}>Checkout!</Link>
         </ShoppingCartTable>
     </div>
   )
