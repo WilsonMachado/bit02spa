@@ -56,9 +56,17 @@ export const LoginPage = ({setCurrentUser}) => {
                     
                     const validateUser = registeredUsers.some((user) => user.username === userLogging.username && user.password === userLogging.password);                
                     
-                    if(validateUser){                    
-                        localStorage.setItem('currentUser', JSON.stringify( [userLogging] ) );
-                        setCurrentUser(userLogging);
+                    if(validateUser){
+
+                        let userLoggedData = registeredUsers.find(function (usuario) {
+                            
+                            return usuario.username === name;
+                        
+                        });                        
+
+                        localStorage.setItem('currentUser', JSON.stringify( [userLoggedData] ) );
+                        
+                        setCurrentUser(userLoggedData);
                         setValidated(true);                   
                     }else{
                         setUserDoesntExist(true);
