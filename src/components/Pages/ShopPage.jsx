@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import ProductCard from '../ProductCard';
 
 const products = [
@@ -88,13 +88,9 @@ const products = [
   },
 ];
 
-export const ShopPage = ({numberOfItems, setNumberOfItems}) => {
+export const ShopPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => { 
 
-  //! States ///////
-    const [cart, setCart] = useState([]);
-  //! //////////////////////////////////////////////////////////////////////////////////
-
-  //** Ciclo de vida */
+    //** Ciclo de vida */
 
     //? Montaje
 
