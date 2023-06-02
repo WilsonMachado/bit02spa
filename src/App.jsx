@@ -24,10 +24,24 @@ function App() {
   //? Montaje
 
   useEffect(() => {
-    const userLogged = JSON.parse(localStorage.getItem('currentUser'));
+    
+    const userLogged = JSON.parse(localStorage.getItem('currentUser'));  //! Para obtener el usuario logueado
+    
     if(userLogged !== null){
       setCurrentUser(userLogged);
     }
+
+    const currentCart = JSON.parse(localStorage.getItem('cart'));         //! Para obtener los valores actuales del carrito
+      
+      if(currentCart !== null){     // Si existe el cart en el localstorage, se obtiene la cantidad de items   
+                                    
+          let suma = 0;
+          for (let i = 0; i < currentCart.length; i++){
+            suma += currentCart[i].quantity;
+          }
+          setNumberOfItems(suma);         
+      }
+
   }, []) 
 
   //? Actualización  
@@ -38,12 +52,6 @@ function App() {
 
   //** Handlers */   
  
-  
-  const cart = (e) =>{
-    e.preventDefault();
-    console.log("Vamos pal carrito")
-  }
-  
 
   const getUsersFromLocalStorage = () => {
     console.table(JSON.parse(localStorage.getItem('registeredUsers')));
@@ -57,11 +65,11 @@ function App() {
               
               <Navegacion>
                 { 
-                  // TODO: componente formulario que recibe datos de registro y almacena en localstorage
+                  
                   (currentUser !== null) ?
                     <>
                       <div>
-                        <Link to="/bit02spa/cart" onClick={cart}>{`Cart(${numberOfItems})`}</Link>
+                        <Link to="/bit02spa/cart">{`Cart(${numberOfItems})`}</Link>
                         <Link to="/bit02spa/logout">Logout</Link>
                       </div>                      
                     </>
@@ -81,7 +89,7 @@ function App() {
                   <Route path='/bit02spa/shop' element={<ShopPage numberOfItems={numberOfItems} setNumberOfItems={setNumberOfItems}/>} />
                   <Route path='/bit02spa/profile' element={
                     <RouteWatchdog currentUser={currentUser}>
-                      <UserPage currentUser={currentUser}/>
+                      <UserPage setNumberOfItems={setNumberOfItems} />
                     </RouteWatchdog>
                     }
                   />

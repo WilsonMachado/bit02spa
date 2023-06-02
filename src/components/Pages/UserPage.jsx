@@ -1,4 +1,29 @@
-export const UserPage = () => {
+import { useEffect } from 'react';
+
+export const UserPage = ({setNumberOfItems}) => {
+
+  //** Ciclo de vida */
+
+    //? Montaje
+
+    useEffect(() => {
+      
+      const currentCart = JSON.parse(localStorage.getItem('cart'));
+      
+      if(currentCart !== null){     // Si existe el cart en el localstorage, se obtiene la cantidad de items   
+                                    
+          let suma = 0;
+          for (let i = 0; i < currentCart.length; i++){
+            suma += currentCart[i].quantity;
+          }
+          setNumberOfItems(suma);         
+      }
+    
+    }, [])  
+
+    //? Actualización  
+
+    //? Desmontaje 
   
   return (
     <div className='user-container'>
