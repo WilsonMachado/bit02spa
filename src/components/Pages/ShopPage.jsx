@@ -119,10 +119,6 @@ export const ShopPage = ({cart, setCart, numberOfItems, setNumberOfItems}) => {
 
     //? Desmontaje 
 
-  const handlerShowCart = () => {
-    console.table(cart);
-  }
-
   return (
     <div className='shop-container'>      
       
