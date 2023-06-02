@@ -19,12 +19,22 @@ export const CartPage = ({cart, setCart, setNumberOfItems}) => {
   
       //? Desmontaje 
 
+    //** Handlers */   
+
+    const handlerRemoveAllCartItems = () => {
+      setCart([]);
+      setNumberOfItems(0);
+      localStorage.setItem('cart', JSON.stringify([]));
+    }
+
+    //** //////////////////////////////////////////////////////////////////////////// */
+
 
   return (
     <div className="cart-container">
         <h2>Bill</h2>
         <ShoppingCartTable cart={cart} setCart={setCart} setNumberOfItems={setNumberOfItems}>
-            <Link onClick={() => console.log('Limpiando carrito')}>Clear cart</Link>
+            <Link onClick={handlerRemoveAllCartItems}>Clear cart</Link>
             <Link onClick={() => console.log('Vamos al pago')}>Checkout!</Link>
         </ShoppingCartTable>
     </div>
